@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/users">
+
+
+    <fragment
+        android:id="@+id/users"
+        android:name="it.cron.githubusers.ui.users.UsersFragment"
+        android:label="Users" >
+        <action
+            android:id="@+id/action_users_to_personFragment2"
+            app:destination="@id/personFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/personFragment2"
+        android:name="it.cron.githubusers.ui.person.PersonFragment"
+        android:label="fragment_person2">
+        <action
+            android:id="@+id/action_personFragment2_to_users"
+            app:destination="@id/users" />
+    </fragment>
+</navigation>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    >
+
+    <ImageView
+        android:id="@+id/imageViewBack"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_back" />
+
+    <ImageView
+        android:id="@+id/imageViewAvatar"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/labelName"
+        style="@style/textLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="65dp"
+        android:text="Name:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAvatar" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        style="@style/textName"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/labelName"
+        app:layout_constraintTop_toTopOf="@+id/labelName" />
+
+    <TextView
+        android:id="@+id/labelEmail"
+        style="@style/textLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Email:"
+        app:layout_constraintEnd_toEndOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        style="@style/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/labelEmail"
+        app:layout_constraintTop_toTopOf="@+id/labelEmail" />
+
+    <TextView
+        android:id="@+id/labelOrganization"
+        style="@style/textLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Organization: "
+        app:layout_constraintEnd_toEndOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+
+    <TextView
+        android:id="@+id/textViewOrganization"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        style="@style/textName"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/labelOrganization"
+        app:layout_constraintTop_toTopOf="@+id/labelOrganization" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/Barrier"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="textViewEmail,textViewOrganization"
+        >
+    </androidx.constraintlayout.widget.Barrier>
+
+    <TextView
+        android:id="@+id/labelFollowingcount"
+        style="@style/textLabel"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="end"
+        android:text="Following count:"
+        app:layout_constraintEnd_toEndOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/Barrier" />
+
+    <TextView
+        android:id="@+id/textViewFollowingCount"
+        style="@style/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/labelFollowingcount"
+        app:layout_constraintStart_toEndOf="@+id/labelFollowingcount"
+        app:layout_constraintTop_toTopOf="@+id/labelFollowingcount" />
+
+    <TextView
+        android:id="@+id/labelFollowersCount"
+        style="@style/textLabel"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="end"
+        android:text="Followers count:"
+        app:layout_constraintEnd_toEndOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFollowingCount" />
+
+    <TextView
+        android:id="@+id/textViewFollowersCount"
+        style="@style/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/labelFollowersCount"
+        app:layout_constraintStart_toEndOf="@+id/labelFollowersCount"
+        app:layout_constraintTop_toTopOf="@+id/labelFollowersCount" />
+
+    <TextView
+        android:id="@+id/labelCreated_at"
+        style="@style/textLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Dete created:"
+        app:layout_constraintEnd_toEndOf="@+id/labelName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFollowersCount" />
+
+    <TextView
+        android:id="@+id/textViewCreated_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        style="@style/textName"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/labelCreated_at"
+        app:layout_constraintTop_toTopOf="@+id/labelCreated_at" />
+</androidx.constraintlayout.widget.ConstraintLayout>
