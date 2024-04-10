@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import it.cron.githubusers.entity.ApiUseCaseInterface
+import it.cron.githubusers.common.ApiUseCaseInterface
 import javax.inject.Inject
 
 class UsersViewModel @Inject constructor(
@@ -16,7 +16,5 @@ class UsersViewModel @Inject constructor(
         config = PagingConfig(pageSize = 30),
         pagingSourceFactory = { apiUseCase.getUsers }
     ).flow.cachedIn(viewModelScope)
-
-
 
 }

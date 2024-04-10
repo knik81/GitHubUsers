@@ -63,7 +63,10 @@ dependencies {
 
     //даггер
     implementation(libs.dagger)
+    implementation (libs.dagger.android)
+    implementation (libs.dagger.android.support)
     kapt(libs.dagger.compiler)
+    kapt (libs.dagger.android.processor)
 
     //свайп для обновления
     implementation(libs.androidx.swiperefreshlayout)

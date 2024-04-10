@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.Provides
 import it.cron.githubusers.data.RepositoryApi
 import it.cron.githubusers.domain.ApiUseCase
-import it.cron.githubusers.entity.RepositoryApiInterface
-import it.cron.githubusers.entity.ApiUseCaseInterface
+import it.cron.githubusers.common.RepositoryApiInterface
+import it.cron.githubusers.common.ApiUseCaseInterface
 
 @Module
 object ModuleApp {

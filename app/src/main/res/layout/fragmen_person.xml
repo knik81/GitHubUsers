@@ -140,7 +140,7 @@
                 app:layout_constraintTop_toTopOf="@+id/labelFollowersCount" />
 
             <TextView
-                android:id="@+id/labelCreated_at"
+                android:id="@+id/labelCreatedAt"
                 style="@style/textLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,14 +150,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewFollowersCount" />
 
             <TextView
-                android:id="@+id/textViewCreated_at"
+                android:id="@+id/textViewCreatedAt"
                 style="@style/textName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/labelCreated_at"
-                app:layout_constraintTop_toTopOf="@+id/labelCreated_at" />
+                app:layout_constraintStart_toEndOf="@+id/labelCreatedAt"
+                app:layout_constraintTop_toTopOf="@+id/labelCreatedAt" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,8 +2,8 @@ package it.cron.githubusers.domain
 
 import androidx.paging.PagingSource
 import it.cron.githubusers.data.api.PagingSourceUser
-import it.cron.githubusers.entity.RepositoryApiInterface
-import it.cron.githubusers.entity.ApiUseCaseInterface
+import it.cron.githubusers.common.RepositoryApiInterface
+import it.cron.githubusers.common.ApiUseCaseInterface
 import it.cron.githubusers.entity.UsersInterface
 import javax.inject.Inject
 

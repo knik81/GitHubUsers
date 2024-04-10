@@ -1,35 +1,31 @@
 package it.cron.githubusers.ui.users
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import it.cron.githubusers.App
 import it.cron.githubusers.R
 import it.cron.githubusers.databinding.FragmenUsersBinding
+import it.cron.githubusers.di.DaggerAppComponent
 import it.cron.githubusers.ui.users.recycler.UsersPagerAdapter
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.time.LocalDate
-import java.time.Period
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class UsersFragment @Inject constructor() : Fragment() {
 
     private lateinit var binding: FragmenUsersBinding
 
-    private val viewModel: UsersViewModel by viewModels<UsersViewModel> {
-        (requireContext().applicationContext as App).appComponent.provideUsersViewModelFactory()
+    private val viewModel: UsersViewModel by viewModels {
+        DaggerAppComponent.create().provideUsersViewModelFactory()
     }
 
     private lateinit var usersPagerAdapter: UsersPagerAdapter
@@ -65,8 +61,6 @@ class UsersFragment @Inject constructor() : Fragment() {
             }
         }
 
-
-
         usersPagerAdapter.addLoadStateListener {
             if (it.refresh is LoadState.Error) {
                 var error = (it.refresh as LoadState.Error).error.message
@@ -74,35 +68,31 @@ class UsersFragment @Inject constructor() : Fragment() {
                     if (error.contains("403"))
                         error = "Закончился лимит  " + error
                 //Log.d("Nik", "${error}")
-                Snackbar.make(binding.textView2, "$error", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(binding.recycler, "$error", Snackbar.LENGTH_LONG).show()
             }
         }
 
-        loadData()
-
-
-
         binding.swipe.setOnRefreshListener {
-            if (job != null)
-                job?.cancel()
-
-            lifecycleScope.launch {
-                //для красоты задержка
-                delay(1000)
-                viewModel.getUsers().collect {
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.getUsers().flowWithLifecycle(
+                    viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED
+                ).collect {
                     loadData()
                     binding.swipe.isRefreshing = false
                 }
             }
         }
+
+        loadData()
     }
 
-    private var job: Job? = null
 
     private fun loadData() {
         binding.recycler.adapter = usersPagerAdapter
-        job = lifecycleScope.launch {
-            viewModel.getUsers().collect {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getUsers().flowWithLifecycle(
+                viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED
+            ).collect {
                 usersPagerAdapter.submitData(it)
             }
         }

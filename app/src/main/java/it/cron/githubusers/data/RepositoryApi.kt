@@ -3,7 +3,7 @@ package it.cron.githubusers.data
 import android.util.Log
 import it.cron.githubusers.data.api.RetrofitApi
 import it.cron.githubusers.entity.Person
-import it.cron.githubusers.entity.RepositoryApiInterface
+import it.cron.githubusers.common.RepositoryApiInterface
 import javax.inject.Inject
 
 class RepositoryApi @Inject constructor() : RepositoryApiInterface {

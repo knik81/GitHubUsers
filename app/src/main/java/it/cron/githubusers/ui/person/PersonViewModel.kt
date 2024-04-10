@@ -3,7 +3,7 @@ package it.cron.githubusers.ui.person
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import it.cron.githubusers.entity.ApiUseCaseInterface
+import it.cron.githubusers.common.ApiUseCaseInterface
 import it.cron.githubusers.entity.PersonInterface
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
